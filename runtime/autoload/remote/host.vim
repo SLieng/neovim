@@ -115,12 +115,15 @@ function! s:RegistrationCommands(host) abort
   call remote#host#RegisterClone(host_id, a:host)
   let pattern = s:plugin_patterns[a:host]
   let paths = []
-  for rtp in &rtp
+  for rtp in split(&rtp, ',')
       let tail = split(rtp, '/')[-1]
       let new = rtp . '/' .tail
-      out = call system('/home/simon/lgt/asdf.sh '. )
-      if out == 0
-           call add(paths, new) 
+      echo new
+      let out = system('/home/simon/lgt/asdf.sh '. new)
+      echo out
+      if out == '0'
+        echo 'adfsadfasdf'
+        call add(paths, new) 
       endif
     endfor
 
