@@ -114,7 +114,17 @@ function! s:RegistrationCommands(host) abort
   let host_id = a:host.'-registration-clone'
   call remote#host#RegisterClone(host_id, a:host)
   let pattern = s:plugin_patterns[a:host]
-  let paths = globpath(&rtp, 'exp/*', 0, 1)
+  let paths = []
+  for rtp in &rtp
+      let tail = split(rtp, '/')[-1]
+      let new = rtp . '/' .tail
+      out = call system('/home/simon/lgt/asdf.sh '. )
+      if out == 0
+           call add(paths, new) 
+      endif
+    endfor
+
+  " let paths = globpath(&rtp, '*/*', 0, 1)
   let paths = map(paths, 'tr(resolve(v:val),"\\","/")') " Normalize slashes #4795
   let paths = uniq(sort(paths))
   if empty(paths)
