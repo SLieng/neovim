@@ -72,7 +72,7 @@ function! s:check_interpreter(prog, major_ver) abort
         \ 'sys.path.remove(""); ' .
         \ 'sys.stdout.write(str(sys.version_info[0]) + "." + str(sys.version_info[1])); ' .
         \ 'import pkgutil; ' .
-        \ 'exit(2*int(pkgutil.get_loader("neovim") is None))'
+        \ 'exit(2*int(pkgutil.get_loader("VMX") is None))'
         \ ])
 
   if v:shell_error == 2 || v:shell_error == 0

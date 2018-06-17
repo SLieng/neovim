@@ -45,7 +45,7 @@ function! s:check_rplugin_manifest() abort
   let require_update = 0
 
   for path in map(split(&runtimepath, ','), 'resolve(v:val)')
-    let python_glob = glob(path.'/rplugin/python*', 1, 1)
+    let python_glob = glob(path.'/*/src', 1, 1)
     if empty(python_glob)
       continue
     endif
