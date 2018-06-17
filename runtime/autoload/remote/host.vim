@@ -118,16 +118,16 @@ function! s:RegistrationCommands(host) abort
   for rtp in split(&rtp, ',')
       let tail = split(rtp, '/')[-1]
       let new = rtp . '/' .tail
-      echo new
       let out = system('/home/simon/lgt/asdf.sh '. new)
-      echo out
-      if out == '0'
-        echo 'adfsadfasdf'
+      if out+0 == '0'
+          echo new
+        " call add(paths, new.'/src') 
         call add(paths, new) 
       endif
     endfor
-
-  " let paths = globpath(&rtp, '*/*', 0, 1)
+ echo paths
+  " let paths = globpath(&rtp, 'exp/*', 0, 1)
+  " echo paths
   let paths = map(paths, 'tr(resolve(v:val),"\\","/")') " Normalize slashes #4795
   let paths = uniq(sort(paths))
   if empty(paths)
