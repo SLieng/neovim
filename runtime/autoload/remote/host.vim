@@ -120,12 +120,12 @@ function! s:RegistrationCommands(host) abort
       let new = rtp . '/' .tail
       let out = system('/home/simon/lgt/asdf.sh '. new)
       if out+0 == '0'
-          echo new
+          " echo new
         " call add(paths, new.'/src') 
         call add(paths, new) 
       endif
     endfor
- echo paths
+ " echo paths
   " let paths = globpath(&rtp, 'exp/*', 0, 1)
   " echo paths
   let paths = map(paths, 'tr(resolve(v:val),"\\","/")') " Normalize slashes #4795
