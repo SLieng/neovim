@@ -103,7 +103,7 @@ syn keyword pythonException	except finally raise try
 syn keyword pythonInclude	from import
 syn keyword pythonAsync		async await
 
-" Decorators (new in Python 2.4)
+" Decorators
 " A dot must be allowed because of @MyClass.myfunc decorators.
 syn match   pythonDecorator	"@" display contained
 syn match   pythonDecoratorName	"@\s*\h\%(\w\|\.\)*" display contains=pythonDecorator
@@ -128,7 +128,7 @@ syn match   pythonMatrixMultiply
       \ contains=ALLBUT,pythonDecoratorName,pythonDecorator,pythonFunction,pythonDoctestValue
       \ transparent
 
-syn match   pythonFunction	"\h\w*" display contained
+syn match   pythonFunction	"\i\i*" display contained
 
 syn match   pythonComment	"#.*$" contains=pythonTodo,@Spell
 syn keyword pythonTodo		FIXME NOTE NOTES TODO XXX contained
